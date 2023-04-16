@@ -1,3 +1,4 @@
+%%writefile Music.py
 import streamlit as st
 import spotipy
 import spotipy.oauth2 as oauth2
@@ -29,21 +30,21 @@ def search_spotify(query):
         return None
 
 # ค้นหาเนื้อเพลงจาก Genius ด้วยชื่อเพลงและศิลปิน
-def search_genius(title, artist):
-    song = genius.search_song(title, artist)
-    return song
+#def search_genius(title, artist):
+    #song = genius.search_song(title, artist)
+    #return song
 
 # แสดงผลการค้นหา
 if st.button('Search'):
-    # ค้นหาเพลงจาก Spotify
+    #ค้นหาเพลงจาก Spotify
     track = search_spotify(query)
     if track:
         st.write(f"**{track['name']}** by {track['artists'][0]['name']} from the album {track['album']['name']}")
         # แสดงเนื้อเพลงจาก Genius
-        song = search_genius(track['name'], track['artists'][0]['name'])
-        if song:
-            st.write(song.lyrics)
-        else:
-            st.write('Lyrics not found on Genius.')
+        #song = search_genius(track['name'], track['artists'][0]['name'])
+        #if song:
+            #st.write(song.lyrics)
+        #else:
+            #st.write('Lyrics not found on Genius.')
     else:
         st.write('Song not found on Spotify.')
